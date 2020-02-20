@@ -13,11 +13,13 @@ The server should start and display the port on which it is running. It can then
 ## Git Commands
 
 download
+
 `git fetch`
 
 `git pull origin branch //branch=master usually`
 
 upload
+
 `git add files //file name or . for everything in folder`
 
 `git commit -m "Message"`
@@ -25,6 +27,7 @@ upload
 `git push origin branch`
 
 new branch
+
 `git branch //to see branches`
 
 `git branch newBranch //to create newBranch`
