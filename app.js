@@ -15,6 +15,39 @@ app.use(function (err, req, res, next) {
   console.error(err.stack)
   res.status(500).send('Something broke!')
 })
+//MySql connector
+var mysql = require('mysql');
+
+var con = mysql.createConnection({
+  host: 'localhost',
+  user: 'mysqluser',
+  password: 'mysqlpass',
+  database: 'dbname',
+  multipleStatements: true
+})
+
+con.connect(function (err) {
+  if (err) throw err;
+  console.log("Connected!");
+});
+
+app.get('/testQuery', (req, res) => {
+  let params = req.query;
+  let email = params.email;
+  con.query(`SELECT * 
+             FROM User  
+             WHERE email = "${email}"`, function (error, results, fields) {
+    if (error) throw error;
+    else {
+      console.log(results);
+      return res.json({
+        data: results
+      })
+    };
+  });
+});
+
+//End Mysql connector
 
 //Routes
 app.get('/', routes.home);
