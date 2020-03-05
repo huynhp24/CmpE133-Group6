@@ -16,8 +16,11 @@ app.use(function (err, req, res, next) {
   res.status(500).send('Something broke!')
 })
 
+//End Mysql connector
+
 //Routes
 app.get('/', routes.home);
+app.get('/testQuery', routes.testQuery);
 
 // Start Server
 http.createServer(app).listen(app.get('port'), '0.0.0.0', function() {
