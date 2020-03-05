@@ -17,8 +17,10 @@
   },
   "homepage": "https://github.com/huynhp24/CmpE133-Group6#readme",
   "dependencies": {
+    "body-parser": "^1.19.0",
     "ejs": "^3.0.1",
     "express": "^4.17.1",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "request": "^2.88.2"
   }
 }

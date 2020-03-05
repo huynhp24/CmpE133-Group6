@@ -1,0 +1,5 @@
+var val = "wow wow wow you connected to the backend"
+
+module.exports = {
+    "backValue": val
+}
