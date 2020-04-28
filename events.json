@@ -1,0 +1,76 @@
+{
+    "0": {
+        "kind": "calendar#event",
+        "etag": "\"3176199555836000\"",
+        "id": "07glb5ve14bmloo3jiriuu0dl9",
+        "status": "confirmed",
+        "htmlLink": "https://www.google.com/calendar/event?eid=MDdnbGI1dmUxNGJtbG9vM2ppcml1dTBkbDkgaGVscG1laGVscG1ldHV0b3JAbQ",
+        "created": "2020-0 4-27T04: 33: 34.000Z",
+        "updated": "2020-04-28T18: 49: 37.918Z",
+        "summary": "Test Session",
+        "description": "We will be looking at Fundamental Theorem Proofs in Calculus",
+        "location": "Skype: tutoringuserskype232345",
+        "creator": {
+            "email": "helpmehelpmetutor@gmail.com",
+            "self": true
+        },
+        "organizer": {
+            "email": "helpmehelpmetutor@gmail.com",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2020-04-29T09: 00: 00-07: 00"
+        },
+        "end": {
+            "dateTime": "2020-04-29T10: 00: 00-07: 00"
+        },
+        "iCalUID": "07glb5ve14bmloo3jiriuu0dl9@google.com",
+        "sequence": 0,
+        "attendees": [
+            {
+                "email": "helpmehelpmetutor@gmail.com",
+                "organizer": true,
+                "self": true,
+                "responseStatus": "accepted"
+            }
+        ],
+        "guestsCanInviteOthers": false
+    },
+    "1": {
+        "kind": "calendar#event",
+        "etag": "\"3176209537308000\"",
+        "id": "7fr7gvsnnkdg7glh7vai455o04",
+        "status": "confirmed",
+        "htmlLink": "https: //www.google.com/calendar/event?eid=N2ZyN2d2c25ua2RnN2dsaDd2YWk0NTVvMDQgaGVscG1laGVscG1ldHV0b3JAbQ",
+        "created": "20 20-04-28T20: 11: 54.000Z",
+        "updated": "2020-04-28T20: 12: 48.654Z",
+        "summary": "Another Session",
+        "description": "We will be looking at Fundamental Theorem Proofs in Calculus",
+        "location": "Skype: tutoringuserskype232345,",
+        "creator": {
+            "email": "helpmehelpmetutor@gmail.com",
+            "self": true
+        },
+        "organizer": {
+            "email": "helpmehelpmetutor@gmail.com",
+            "self": true
+        },
+        "start": {
+            "dateTime": "2020-04-30T09: 00: 00-07: 00"
+        },
+        "end": {
+            "dateTime": "2020-04-30T10: 00: 00-07: 00"
+        },
+        "iCalUID": "7fr7gvsnnkdg7glh7vai455o04@google.com",
+        "sequence": 0,
+        "attendees": [
+            {
+                "email": "helpmehelpmetutor@gmail.com",
+                "organizer": true,
+                "self": true,
+                "responseStatus": "accepted"
+            }
+        ],
+        "guestsCanInviteOthers": false
+    }
+}
