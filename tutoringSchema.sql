@@ -22,6 +22,15 @@ CREATE TABLE KEYWORD
 	subCategory VARCHAR(30)
 );
 
+DROP TABLE IF EXISTS TUTORS;
+CREATE TABLE TUTORS
+(
+	userName VARCHAR(50),
+    subCategory VARCHAR(30),
+    
+    FOREIGN KEY (userName) REFERENCES USERS(userName) ON DELETE CASCADE,
+    FOREIGN KEY (subCategory) REFERENCES KEYWORD(subCategory) ON DELETE CASCADE
+);
 
 /*
 ==================================== SQL TRIGGERS  =====================================
@@ -47,6 +56,22 @@ CREATE TRIGGER changePassword BEFORE UPDATE ON USERS
 FOR EACH ROW
 BEGIN
 	SET NEW.password = MD5(NEW.password);
+END; //
+DELIMITER ;
+
+-- This trigger has a function to insert all
+-- users flagged as tutors into a new table
+-- which will further contain a keyword associated
+-- with expertise of the tutor
+DROP TRIGGER IF EXISTS insertTutor;
+DELIMITER //
+CREATE TRIGGER insertTutor AFTER INSERT ON USERS
+FOR EACH ROW
+BEGIN
+	IF NEW.isTUTOR = 1 THEN
+    INSERT INTO TUTORS(userName, subCategory)
+    VALUES(NEW.userName, NULL);
+    END IF;
 END; //
 DELIMITER ;
 
