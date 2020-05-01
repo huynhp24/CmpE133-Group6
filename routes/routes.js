@@ -18,5 +18,5 @@ exports.backValue = function(req, res) {
 };
 
 exports.test = function(req, res) {
-    res.render('index.html');
+    res.render('test.html');
 };

@@ -1,24 +1,20 @@
 const fs = require('fs');
-const { google } = require('googleapis');
-var output;
-//var calendar;
+const readline = require('readline');
+const {google} = require('googleapis');
 
+// If modifying these scopes, delete token.json.
+const SCOPES = ['https://www.googleapis.com/auth/calendar'];
+// The file token.json stores the user's access and refresh tokens, and is
+// created automatically when the authorization flow completes for the first
+// time.
 const TOKEN_PATH = 'token.json';
 
 // Load client secrets from a local file.
 fs.readFile('credentials.json', (err, content) => {
   if (err) return console.log('Error loading client secret file:', err);
   // Authorize a client with credentials, then call the Google Calendar API.
-  authorize(JSON.parse(content), listAllEvents);
+  authorize(JSON.parse(content), listEvents);
 });
-
-
-/**
-  @param {google.auth.OAuth2} auth An authorized OAuth2 client.
- */
-function creatCal(auth) {
-  calendar = google.calendar({ version: 'v3', auth });
-}
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -59,7 +55,7 @@ function getAccessToken(oAuth2Client, callback) {
     rl.close();
     oAuth2Client.getToken(code, (err, token) => {
       if (err) return console.error('Error retrieving access token', err);
-      oAuth2Client.setOauthToken(token);
+      oAuth2Client.setCredentials(token);
       // Store the token to disk for later program executions
       fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
         if (err) return console.error(err);
@@ -71,51 +67,28 @@ function getAccessToken(oAuth2Client, callback) {
 }
 
 /**
-  @param {google.auth.OAuth2} auth An authorized OAuth2 client.
+ * Lists the next 10 events on the user's primary calendar.
+ * @param {google.auth.OAuth2} auth An authorized OAuth2 client.
  */
-function requestEvents(parameters, auth) {
-  const calendar = google.calendar({ version: 'v3', auth });
-  output = {};
-    calendar.events.list(parameters, (err, res) => {
-        if (err) return console.log('The API returned an error: ' + err);
-        const events = res.data.items;
-        if (events.length) {
-          console.log('Upcoming 10 events:');
-          output = Object.assign({}, events)
-        } else {
-          console.log('No upcoming events found.');
-        }
+function listEvents(auth) {
+  const calendar = google.calendar({version: 'v3', auth});
+  calendar.events.list({
+    calendarId: 'primary',
+    timeMin: (new Date()).toISOString(),
+    maxResults: 10,
+    singleEvents: true,
+    orderBy: 'startTime',
+  }, (err, res) => {
+    if (err) return console.log('The API returned an error: ' + err);
+    const events = res.data.items;
+    if (events.length) {
+      console.log('Upcoming 10 events:');
+      events.map((event, i) => {
+        const start = event.start.dateTime || event.start.date;
+        console.log(`${start} - ${event.summary}`);
       });
-}
-
-
-
-function listAllEvents() {
-    parameters = {
-        calendarId: 'helpmehelpmetutor@gmail.com',
-        timeMin: (new Date()).toISOString(),
-        maxResults: 10,
-        singleEvents: true,
-        orderBy: 'startTime',
+    } else {
+      console.log('No upcoming events found.');
     }
-requestEvents(parameters);
-
-   
-   setTimeout(()=>{
-    let events = JSON.parse(JSON.stringify(output));
-    //console.log(JSON.stringify(events))
-
-    var i;
-    for (i in events){
-      let title = events[i]["summary"];
-      let description = events[i]["description"]
-      let start = events[i]["start"]["dateTime"] || events[i]["start"]["date"];
-      let html = events[i]["htmlLink"]
-      let loc = events[i]["location"]
-      console.log('\n\nMeeting: ' + title + '\nDesc: ' + description + '\nStarts: ' + start + '\nLink: ' + html + '\nWhere: ' + loc);
-    }
-  },1000)
-    
+  });
 }
-
-//listAllEvents();
