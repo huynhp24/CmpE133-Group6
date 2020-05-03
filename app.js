@@ -37,9 +37,9 @@ app.use(bodyParser.json());
 
 //Routes
 app.get("/", routes.home);
-app.get("/testQuery", routes.testQuery);
 app.get("/test", routes.test);
 app.get("/getBackValue", routes.backValue);
+app.get("/createdb", routes.createdb);
 
 // Start Server
 http.createServer(app).listen(app.get("port"), "0.0.0.0", function () {
