@@ -30,6 +30,7 @@ app.get('/', routes.home);
 app.get('/testQuery', routes.testQuery);
 app.get('/test', routes.test);
 app.get('/getBackValue', routes.backValue);
+app.get('/viewSchedule', routes.viewSchedule);
 
 
 // Start Server
