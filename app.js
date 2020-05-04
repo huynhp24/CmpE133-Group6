@@ -36,9 +36,12 @@ app.use(bodyParser.json());
 //End Mysql connector
 
 //Routes
-app.get("/", routes.home);
-app.get("/test", routes.test);
-app.get("/getBackValue", routes.backValue);
+app.get('/', routes.home);
+app.get('/testQuery', routes.testQuery);
+app.get('/test', routes.test);
+app.get('/getBackValue', routes.backValue);
+app.get('/viewSchedule', routes.viewSchedule);
+app.get('/viewTutorSchedule', routes.viewTutorSchedule);
 app.get("/createdb", routes.createdb);
 
 // Start Server
