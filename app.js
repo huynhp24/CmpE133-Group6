@@ -31,6 +31,7 @@ app.get('/testQuery', routes.testQuery);
 app.get('/test', routes.test);
 app.get('/getBackValue', routes.backValue);
 app.get('/viewSchedule', routes.viewSchedule);
+app.get('/viewTutorSchedule', routes.viewTutorSchedule);
 
 
 // Start Server
