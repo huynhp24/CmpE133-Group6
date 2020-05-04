@@ -4,10 +4,7 @@ var testBack = require('../testbackEnd.js');
 exports.home = function(req, res) {
     console.log("AHHHHHHHHHHHHHHHH");
     res.render('index.html');
-};
-
-exports.testQuery = function(req, res) { //this test can be called with localhost:8081/testQuery?email=theemail@emailplace.com
-    db.testQuery(req,res);
+    // db.createdb(req, res);
 };
 
 exports.backValue = function(req, res) {
@@ -27,4 +24,8 @@ exports.viewTutorSchedule = function(req, res) {
 
 exports.test = function(req, res) {
     res.render('test.html');
+};
+
+exports.createdb = function(req, res) {
+    db.createdb(req, res);
 };
