@@ -1,39 +1,63 @@
 //MySql connector
 var mysql = require('mysql');
+var session = require('express-session');
+// var bodyParser = require('body-parser');
+// var path = require('path');
 
 var con = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'root',
-  database: 'dbname',
-  multipleStatements: true
+	host: 'localhost',
+	user: 'root',
+	password: '',
+	// database: 'TUTORING',
+	multipleStatements: true
 })
 
-con.connect(function (err) {
-  if (err) //throw err;
-    console.log("Database connection failed")
-  else
-  console.log("Connected!");
+con.connect((err) => {
+	if (err) {
+		console.log('Not connected!');
+	}
+	console.log('Connected sucessfully');
 });
 
-function theActualTestQuery(req, res){
-    let params = req.query;
-    let email = params.email;
-    con.query(`SELECT * 
-               FROM User
-               WHERE email = "${email}"`, function (error, results, fields) {
-      if (error) throw error;
-      else {
-        console.log(results);
-        return res.json({
-          data: results
-        })
-      };
+con.query('SELECT * FROM USERS', function (error, results, fields) {
+    if (error)
+        throw error;
+    results.forEach(result => {
+        console.log(result);
     });
-}
+});
 
 module.exports = {
-    testQuery: function(req,res){
-        theActualTestQuery(req,res);
-    },
+	createdb: function (req, res) {
+		createdbTest(req, res);
+	}
 }
+
+function createdbTest(req, res) {
+    let sql = 'source tutoringSchema.sql';
+    con.query(sql, (err, result) => {
+        if (err) throw err;
+        console.log(result);
+        res.send('Database created');
+	});
+}
+
+// app.post('/auth', function(req, res) {
+// 	var username = req.body.username;
+// 	var password = req.body.password;
+// 	if (username && password) {
+// 		connection.query('SELECT * FROM accounts WHERE username = ? AND password = MD5(?)', [username, password], function(error, results, fields) {
+// 			if (results.length > 0) {
+// 				req.session.loggedin = true;
+// 				req.session.username = username;
+// 				res.redirect('/home');
+// 			} else {
+// 				res.send('Incorrect Username and/or Password!');
+// 			}			
+// 			res.end();
+// 		});
+// 	} else {
+// 		res.send('Please enter Username and Password!');
+// 		res.end();
+// 	}
+// });
