@@ -1,39 +1,35 @@
 //MySql connector
+var express = require('express');
 var mysql = require('mysql');
+var app = express();
 
 var con = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'root',
-  database: 'dbname',
+  password: '',
+  database: 'TUTORING',
   multipleStatements: true
 })
 
 con.connect(function (err) {
-  if (err) //throw err;
-    console.log("Database connection failed")
+  if (!!err) 
+    { console.log(err)
+      console.log("Database connection failed");}
   else
-  console.log("Connected!");
+  {console.log("Connected!");}
 });
 
-function theActualTestQuery(req, res){
-    let params = req.query;
-    let email = params.email;
-    con.query(`SELECT * 
-               FROM User
-               WHERE email = "${email}"`, function (error, results, fields) {
-      if (error) throw error;
-      else {
-        console.log(results);
-        return res.json({
-          data: results
-        })
-      };
-    });
-}
 
-module.exports = {
-    testQuery: function(req,res){
-        theActualTestQuery(req,res);
-    },
-}
+app.get('/', function(req, resp) {
+  con.query("SELECT * FROM users", function(error, rows, fields){
+  if (!!err) {
+    console.log("Database connection failed");
+  }
+  else{
+    console.log("Connected!");
+    }
+  });
+})
+
+app.listen(3306);
+
