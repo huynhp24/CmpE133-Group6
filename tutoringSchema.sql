@@ -10,7 +10,7 @@ CREATE TABLE USERS
 	password VARCHAR(50), -- MD5 hashed password
 	userName VARCHAR(50) UNIQUE,
 	email VARCHAR(100),
-	phoneNumber INT,
+	phoneNumber BIGINT,
 	isTutor BINARY, -- 1 FOR TUTOR, 0 FOR STUDENT
 	PRIMARY KEY (userName)
 );
@@ -28,8 +28,8 @@ CREATE TABLE TUTORS
 	userName VARCHAR(50),
     subCategory VARCHAR(30),
     
-    FOREIGN KEY (userName) REFERENCES USERS(userName) ON DELETE CASCADE,
-    FOREIGN KEY (subCategory) REFERENCES KEYWORD(subCategory) ON DELETE CASCADE
+    FOREIGN KEY (userName) REFERENCES USERS(userName) ON DELETE CASCADE
+    -- FOREIGN KEY (subCategory) REFERENCES KEYWORD(subCategory)
 );
 
 /*
@@ -85,3 +85,12 @@ DELIMITER ;
 --     SELECT * FROM USERS WHERE isTutor = 1;
 -- END//
 -- DELIMETER ;
+
+
+INSERT INTO USERS VALUES
+('John', 'Lennon', 'skkgj583', 'shesSoHeavy', 'john1980@gmail.com', '1596875634', 1),
+('Paul', 'McCartney', 'khhiy^76', 'yesterday1965', 'macca19st@gmail.com', '465894352', 1),
+('Ringo', 'Starr', 'fjeb7$&', 'submarineYell0w', 'yell0wsub@gmail.com', '4953576985', 1),
+('George', 'Harrison', 'kjdny*Q', 'something165', 'krishnahare@gmail.com', '6957893249', 0),
+('George', 'Martin', 'wnwdu&3*@', '5thbeatle', 'xX_suits_Xx@gmail.com', '6957823694', 0)
+;
