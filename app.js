@@ -33,6 +33,10 @@ app.use(session({
 }));
 
 app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true,
+}));
+
 app.use(passport.initialize()); // for login(CHRIS)
 app.use(passport.session()); //for login(CHRIS)
 app.use(methodOverride('_method')); //for logout(CHRIS)
