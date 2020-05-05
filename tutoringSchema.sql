@@ -28,7 +28,7 @@ CREATE TABLE TUTORS
 	userName VARCHAR(50),
     subCategory VARCHAR(30),
     
-    FOREIGN KEY (userName) REFERENCES USERS(userName) ON DELETE CASCADE
+    FOREIGN KEY (userName) REFERENCES USERS(userName) ON DELETE CASCADE 
     -- FOREIGN KEY (subCategory) REFERENCES KEYWORD(subCategory)
 );
 
@@ -94,3 +94,34 @@ INSERT INTO USERS VALUES
 ('George', 'Harrison', 'kjdny*Q', 'something165', 'krishnahare@gmail.com', '6957893249', 0),
 ('George', 'Martin', 'wnwdu&3*@', '5thbeatle', 'xX_suits_Xx@gmail.com', '6957823694', 0)
 ;
+
+select * From users; 
+
+select u.name, q.keyword, u.username from users u inner join questions q on u.username = q.username; 
+select * from questions; 
+drop table questions; 
+CREATE TABLE Questions
+(
+	id int primary key auto_increment, 
+    username varchar(255) not null,
+    status varchar(50) DEFAULT 'Sandnes',  
+	title VARCHAR(100)  not null,
+	description VARCHAR(255) not null,
+	keyword VARCHAR(255) not null
+	
+);
+
+create table subjects (
+	id int primary key auto_increment, 
+    userName varchar(255) unique not null, 
+    subject varchar(255) not null, 
+	FOREIGN KEY (userName) REFERENCES USERS(userName) 
+); 
+
+-- 1 - hansolKim - Math
+-- 2 - hansolKim - Tech
+
+-- get all the userNames that are tutors that teach math and science 
+-- select * from users where isTutor = 1 and userName in 
+-- (select userName from subjects where subject ('Math', 'Science'); 
+commit; 
