@@ -9,8 +9,8 @@ var session = require('express-session');
 var con = mysql.createConnection({
 	host: 'localhost',
 	user: 'root',
-	password: 'zcj5948405',
-    database: 'TUTORING',
+	password: 'doot',
+  database: 'TUTORING',
 	multipleStatements: true
 })
 
