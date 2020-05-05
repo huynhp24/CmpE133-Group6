@@ -1,0 +1,121 @@
+const fs = require('fs');
+const { google } = require('googleapis');
+var output;
+//var calendar;
+
+const TOKEN_PATH = 'token.json';
+
+// Load client secrets from a local file.
+fs.readFile('credentials.json', (err, content) => {
+  if (err) return console.log('Error loading client secret file:', err);
+  // Authorize a client with credentials, then call the Google Calendar API.
+  authorize(JSON.parse(content), listAllEvents);
+});
+
+
+/**
+  @param {google.auth.OAuth2} auth An authorized OAuth2 client.
+ */
+function creatCal(auth) {
+  calendar = google.calendar({ version: 'v3', auth });
+}
+
+/**
+ * Create an OAuth2 client with the given credentials, and then execute the
+ * given callback function.
+ * @param {Object} credentials The authorization client credentials.
+ * @param {function} callback The callback to call with the authorized client.
+ */
+function authorize(credentials, callback) {
+  const {client_secret, client_id, redirect_uris} = credentials.installed;
+  const oAuth2Client = new google.auth.OAuth2(
+      client_id, client_secret, redirect_uris[0]);
+
+  // Check if we have previously stored a token.
+  fs.readFile(TOKEN_PATH, (err, token) => {
+    if (err) return getAccessToken(oAuth2Client, callback);
+    oAuth2Client.setCredentials(JSON.parse(token));
+    callback(oAuth2Client);
+  });
+}
+
+/**
+ * Get and store new token after prompting for user authorization, and then
+ * execute the given callback with the authorized OAuth2 client.
+ * @param {google.auth.OAuth2} oAuth2Client The OAuth2 client to get token for.
+ * @param {getEventsCallback} callback The callback for the authorized client.
+ */
+function getAccessToken(oAuth2Client, callback) {
+  const authUrl = oAuth2Client.generateAuthUrl({
+    access_type: 'offline',
+    scope: SCOPES,
+  });
+  console.log('Authorize this app by visiting this url:', authUrl);
+  const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+  });
+  rl.question('Enter the code from that page here: ', (code) => {
+    rl.close();
+    oAuth2Client.getToken(code, (err, token) => {
+      if (err) return console.error('Error retrieving access token', err);
+      oAuth2Client.setOauthToken(token);
+      // Store the token to disk for later program executions
+      fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
+        if (err) return console.error(err);
+        console.log('Token stored to', TOKEN_PATH);
+      });
+      callback(oAuth2Client);
+    });
+  });
+}
+
+/**
+  @param {google.auth.OAuth2} auth An authorized OAuth2 client.
+ */
+function requestEvents(parameters, auth) {
+  const calendar = google.calendar({ version: 'v3', auth });
+  output = {};
+    calendar.events.list(parameters, (err, res) => {
+        if (err) return console.log('The API returned an error: ' + err);
+        const events = res.data.items;
+        if (events.length) {
+          console.log('Upcoming 10 events:');
+          output = Object.assign({}, events)
+        } else {
+          console.log('No upcoming events found.');
+        }
+      });
+}
+
+
+
+function listAllEvents() {
+    parameters = {
+        calendarId: 'helpmehelpmetutor@gmail.com',
+        timeMin: (new Date()).toISOString(),
+        maxResults: 10,
+        singleEvents: true,
+        orderBy: 'startTime',
+    }
+requestEvents(parameters);
+
+   
+   setTimeout(()=>{
+    let events = JSON.parse(JSON.stringify(output));
+    //console.log(JSON.stringify(events))
+
+    var i;
+    for (i in events){
+      let title = events[i]["summary"];
+      let description = events[i]["description"]
+      let start = events[i]["start"]["dateTime"] || events[i]["start"]["date"];
+      let html = events[i]["htmlLink"]
+      let loc = events[i]["location"]
+      console.log('\n\nMeeting: ' + title + '\nDesc: ' + description + '\nStarts: ' + start + '\nLink: ' + html + '\nWhere: ' + loc);
+    }
+  },1000)
+    
+}
+
+//listAllEvents();
