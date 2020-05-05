@@ -32,7 +32,6 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 app.use(passport.initialize()); // for login(CHRIS)
 app.use(passport.session()); //for login(CHRIS)
@@ -48,6 +47,11 @@ app.post('/register',checkNotAuthenticated, routes.handleRegisterForm); // handl
 app.post('/login',checkNotAuthenticated, routes.handleLoginForm);// handle login form data(CHRIS)
 app.delete('/logout',routes.logout);// logout(CHRIS)
 //app.get('/testQuery', routes.testQuery);
+app.get("/", routes.home);
+app.get("/helpMe", routes.helpMe);
+app.get("/helpMeData", routes.helpMeData);
+app.get("/chooseTutor/:subject/:questionid", routes.chooseTutor); 
+app.post("/helpMe", routes.helpMePost);
 app.get('/test', routes.test);
 app.get('/getBackValue', routes.backValue);
 app.get('/viewSchedule', routes.viewSchedule);
