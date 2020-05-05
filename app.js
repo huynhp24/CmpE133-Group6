@@ -30,13 +30,16 @@ app.use(session({
 	saveUninitialized: true
 }));
 
-app.use(bodyParser.urlencoded({extended : true}));
 app.use(bodyParser.json());
 
 //End Mysql connector
 
 //Routes
-app.get('/', routes.home);
+app.get("/", routes.home);
+app.get("/helpMe", routes.helpMe);
+app.get("/helpMeData", routes.helpMeData);
+app.get("/chooseTutor/:subject/:questionid", routes.chooseTutor); 
+app.post("/helpMe", routes.helpMePost);
 app.get('/testQuery', routes.testQuery);
 app.get('/test', routes.test);
 app.get('/getBackValue', routes.backValue);
