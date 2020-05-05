@@ -88,9 +88,38 @@ DELIMITER ;
 
 
 INSERT INTO USERS VALUES
-('John', 'Lennon', 'skkgj583', 'shesSoHeavy', 'john1980@gmail.com', '1596875634', 1),
-('Paul', 'McCartney', 'khhiy^76', 'yesterday1965', 'macca19st@gmail.com', '465894352', 1),
-('Ringo', 'Starr', 'fjeb7$&', 'submarineYell0w', 'yell0wsub@gmail.com', '4953576985', 1),
-('George', 'Harrison', 'kjdny*Q', 'something165', 'krishnahare@gmail.com', '6957893249', 0),
-('George', 'Martin', 'wnwdu&3*@', '5thbeatle', 'xX_suits_Xx@gmail.com', '6957823694', 0)
+("John", "Lennon", "skkgj583", "shesSoHeavy", "john1980@gmail.com", "1596875634", 1),
+("Paul", "McCartney", "khhiy^76", "yesterday1965", "macca19st@gmail.com", "465894352", 1),
+("Ringo", "Starr", "fjeb7$&", "submarineYell0w", "yell0wsub@gmail.com", "4953576985", 1),
+("George", "Harrison", "kjdny*Q", "something165", "krishnahare@gmail.com", "6957893249", 0),
+("George", "Martin", "wnwdu&3*@", "5thbeatle", "xX_suits_Xx@gmail.com", "6957823694", 0)
+;
+
+INSERT INTO KEYWORD VALUES
+("math", "linear algebra"),
+("math", "calculus"),
+("math", "derivatives"),
+("math", "integrals"),
+("math", "partial derivatives"),
+("math", "multiple integrals"),
+("math", "proofs"),
+("computer science", "java"),
+("computer science", "python"),
+("computer science", "c++"),
+("computer science", "c"),
+("computer science", "ood"),
+("computer science", "mysql"),
+("computer science", "javascript"),
+("computer science", "php"),
+("chemistry", "balancing"),
+("chemistry", "reactions"),
+("chemistry", "organic"),
+("chemistry", "inorganic"),
+("physics", "mechanics"),
+("physics", "electricity"),
+("physics", "magnetism"),
+("physics", "momentum"),
+("physics", "inertia"),
+("biology", "dna"),
+("biology", "krebs cycle")
 ;
