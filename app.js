@@ -64,6 +64,7 @@ app.get('/getBackValue', routes.backValue);
 app.get('/viewSchedule', routes.viewSchedule);
 app.get('/viewTutorSchedule', routes.viewTutorSchedule);
 app.get("/createdb", routes.createdb);
+app.get("/tutorDashboard", routes.tutorDashboard);
 
 // Start Server
 http.createServer(app).listen(app.get("port"), "0.0.0.0", function () {

@@ -105,3 +105,6 @@ exports.logout = (req, res) => {
     res.redirect('/');
 };
 
+exports.tutorDashboard = (req, res) => {
+    res.render('tutoringDashboard.ejs');
+};
