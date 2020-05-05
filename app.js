@@ -1,22 +1,19 @@
-var express = require("express"),
-	routes = require("./routes/routes.js"),
-	http = require("http"),
-	path = require("path"),
-	app = express(),
-	request = require("request"),
-	bodyParser = require("body-parser");
-	session = require('express-session');
 
-app.set("port", 8081);
-app.set("views", __dirname + "/public/views");
-app.set("view engine", "ejs");
-app.engine("html", require("ejs").renderFile);
-app.use(express.static(path.join(__dirname, "public")));
-app.use("/style", express.static(path.join(__dirname, "/public/style")));
-app.use(function (err, req, res, next) {
-	console.error(err.stack);
-	res.status(500).send("Something broke!");
-});
+
+const express =require('express'),
+    routes = require('./routes/routes.js'),
+    http = require('http'),
+    path = require('path'),
+    app = express(),
+    request = require('request'),
+    bodyParser = require('body-parser');
+    flash = require('express-flash'); //used for flashing error messages(CHRIS)
+    session = require('express-session'); //used for (CHRIS)
+    passport = require('passport');// used for login authentication(CHRIS)
+    methodOverride = require('method-override'); //override post/get method (CHRIS)
+
+    checkAuthenticated = require('./component/login_component/checkAuthenticated'); //if user is not authenticated, not allow to access pages other than login, register, index pages(CHRIS)
+    checkNotAuthenticated = require('./component/login_component/checkNotAuthenticated');//if user is authenticated, redirect to home page if user go to /login page(CHRIS)
 
 app.use(
 	bodyParser.urlencoded({
