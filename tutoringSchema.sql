@@ -154,3 +154,32 @@ INSERT INTO KEYWORD VALUES
 ("biology", "dna"),
 ("biology", "krebs cycle")
 ;
+
+INSERT INTO KEYWORD VALUES
+("math", "linear algebra"),
+("math", "calculus"),
+("math", "derivatives"),
+("math", "integrals"),
+("math", "partial derivatives"),
+("math", "multiple integrals"),
+("math", "proofs"),
+("computer science", "java"),
+("computer science", "python"),
+("computer science", "c++"),
+("computer science", "c"),
+("computer science", "ood"),
+("computer science", "mysql"),
+("computer science", "javascript"),
+("computer science", "php"),
+("chemistry", "balancing"),
+("chemistry", "reactions"),
+("chemistry", "organic"),
+("chemistry", "inorganic"),
+("physics", "mechanics"),
+("physics", "electricity"),
+("physics", "magnetism"),
+("physics", "momentum"),
+("physics", "inertia"),
+("biology", "dna"),
+("biology", "krebs cycle")
+;
