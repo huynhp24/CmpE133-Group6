@@ -31,7 +31,10 @@ app.use(session({
 	resave: true,
 	saveUninitialized: true
 }));
-
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
+app.use(flash());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({
   extended: true,
@@ -51,7 +54,7 @@ app.post('/register',checkNotAuthenticated, routes.handleRegisterForm); // handl
 app.post('/login',checkNotAuthenticated, routes.handleLoginForm);// handle login form data(CHRIS)
 app.delete('/logout',routes.logout);// logout(CHRIS)
 //app.get('/testQuery', routes.testQuery);
-app.get("/", routes.home);
+//app.get("/", routes.home);
 app.get("/helpMe", routes.helpMe);
 app.get("/helpMeData", routes.helpMeData);
 app.get("/chooseTutor/:subject/:questionid", routes.chooseTutor); 

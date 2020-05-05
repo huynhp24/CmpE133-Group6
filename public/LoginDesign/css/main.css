@@ -236,6 +236,12 @@ iframe {
   padding: 0 7px 0 43px;
 }
 
+select{
+  border: none; 
+  outline: none;
+  color: #adadad;
+}
+
 
 /*---------------------------------------------*/
 .focus-input100 {

@@ -97,9 +97,9 @@ INSERT INTO USERS VALUES
 
 select * From users; 
 
-select u.name, q.keyword, u.username from users u inner join questions q on u.username = q.username; 
-select * from questions; 
-drop table questions; 
+--select u.name, q.keyword, u.username from users u inner join questions q on u.username = q.username; 
+--select * from questions; 
+drop table if EXISTS questions; 
 CREATE TABLE Questions
 (
 	id int primary key auto_increment, 
