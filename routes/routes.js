@@ -14,8 +14,23 @@ exports.backValue = function(req, res) {
     res.send(data);
 };
 
-exports.test = function(req, res) {
-    res.render('test.html');
+exports.helpMe = function(req, res) {
+    res.render('helpMe/helpMe');
+};
+
+exports.chooseTutor = (req, res) => {
+    db.getTutorsBySubjects(req, res); 
+    // res.render('helpMe/chooseTutor'); 
+}; 
+
+exports.helpMePost = function(req, res) {
+    console.log("There was post of data!"); 
+    db.insertQuestion(req, res); 
+};
+
+exports.helpMeData = function(req, res) {
+    
+    db.getQuestions(req, res); 
 };
 
 exports.createdb = function(req, res) {

@@ -27,7 +27,7 @@ function saveQuestion(e) {
 
   document.getElementById('questionInputForm').reset();
   fetchQuestions();
-  e.preventDefault();
+  // e.preventDefault();
 }
 
 function setStatusClosed(id) {
@@ -58,8 +58,13 @@ function deleteQuestion(id) {
   fetchQuestions();
 }
 
+
 function fetchQuestions() {
-  var questions = JSON.parse(localStorage.getItem('questions'));
+
+ $.get( "/helpMeData", function( data ) {
+  
+ // var questions = JSON.parse(localStorage.getItem('questions'));
+ var questions = data; 
   var questionsList = document.getElementById('questionsList');
 
   questionsList.innerHTML = '';
@@ -70,18 +75,21 @@ function fetchQuestions() {
     var id = questions[i].id;
     var desc = questions[i].description;
     var title = questions[i].title;
-    var keywords = questions[i].keywords;
+    var keywords = questions[i].keyword;
     var status = questions[i].status;
 
-    questionsList.innerHTML +='<div class="well">'+
-                              '<p><span class="label label-info"> ' + status + '</span></p><hr class="my-4">'+
-                              '<h4><strong> Title: </strong>' + title + '</h4> '+
-                              '<h4><strong> Description: </strong>' + desc + '</h4>'+
-                              '<h4><strong> Keywords: </strong>' + keywords + '</h4><hr class="my-4">'+
-                              '<a href="#" onclick="setStatusClosed(\''+id+'\')" class="btn btn-warning">Close</a> '+
-                              '<a href="#" onclick="deleteQuestion(\''+id+'\')" class="btn btn-danger">Delete</a>'+
-                              '<a href="ChooseTutor_index.html"> <button> Find Tutor </button></a> '+
-                              '</div>';
+    questionsList.innerHTML +=`<div class="well">
+                              <p><span class="label label-info"> ${status} </span></p><hr class="my-4">
+                              <h4><strong> Title: </strong>${title} </h4> 
+                              <h4><strong> Description: </strong> ${desc} </h4>
+                              <h4><strong> Keywords: </strong> ${keywords} </h4><hr class="my-4">
+                              <a href="#" onclick="setStatusClosed(\'${id}\')" class="btn btn-warning">Close</a>
+                              <a href="#" onclick="deleteQuestion(\'${id}\')" class="btn btn-danger">Delete</a>
+                              <a href="/chooseTutor/${keywords}/${id}"><button> Find Tutor </button></a>
+                              </div>`; 
   }
 }
+ });
+
+
 }
