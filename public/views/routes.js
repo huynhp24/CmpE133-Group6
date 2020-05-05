@@ -1,9 +1,8 @@
-var db = require('../mySqlConnector.js');
-var testBack = require('../testbackEnd.js');
-
 const bcrypt = require('bcrypt');
 const passport = require('passport')
 
+var db = require('../mySqlConnector.js');
+var testBack = require('../testbackEnd.js');
 const initializePassport = require('../component/login_component/passport-config');
 
 initializePassport(passport, 
@@ -25,6 +24,9 @@ exports.home = function(req, res) {
 };
 
 
+exports.testQuery = function(req, res) { //this test can be called with localhost:8081/testQuery?email=theemail@emailplace.com
+    db.testQuery(req,res);
+};
 
 exports.backValue = function(req, res) {
     console.log("wowza");
@@ -33,40 +35,10 @@ exports.backValue = function(req, res) {
     res.send(data);
 };
 
-exports.helpMe = function(req, res) {
-    res.render('helpMe/helpMe');
-};
-
-exports.chooseTutor = (req, res) => {
-    db.getTutorsBySubjects(req, res); 
-    // res.render('helpMe/chooseTutor'); 
-}; 
-
-exports.helpMePost = function(req, res) {
-    console.log("There was post of data!"); 
-    db.insertQuestion(req, res); 
-};
-
-exports.helpMeData = function(req, res) {
-    
-    db.getQuestions(req, res); 
-};
-
-exports.viewSchedule = function(req, res) {
-    res.render('ViewSchedule.html')
-};
-
-exports.viewTutorSchedule = function(req, res) {
-    res.render('ViewTutorSchedule.html')
-};
-
 exports.test = function(req, res) {
     res.render('test.html');
 };
 
-exports.createdb = function(req, res) {
-    db.createdb(req, res);
-};
 exports.renderLoginPage = (req, res) => {
     res.render('login.ejs');
 };
