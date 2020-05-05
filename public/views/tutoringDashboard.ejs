@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Tutoring Dashboard</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<style>
+		.fakeimg {
+			height: 200px;
+			background: #aaa;
+		}
+	</style>
+</head>
+
+<!--Navigation bar-->
+<div id="nav-placeholder">
+
+</div>
+
+<script>
+	$(function ()
+	{
+		$("#nav-placeholder").load("views/navbar.html");
+	});
+</script>
+<!--end of Navigation bar-->
+
+<body>
+	<div style="background-color:#D9D9D9">
+		
+		<div class="jumbotron text-center" style="vertical-align:middle; color:white; margin-bottom:0; width: 100%; background-color: rgb(58, 131, 69)">
+			<div style="vertical-align:middle; margin-left: 15; margin-right: 15; width:60%; background-color:rgb(86, 207, 102)">
+					<h1>Tutoring Dashboard</h1>
+					<p>Thanks for helping students, you'll find everything you need to help other studets and tutors alike!</p>
+				</div>
+		</div>
+	
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-4">
+					<div style="background-color:rgb(206, 135, 65);height:964;width:440;display:inline-block;color:white;padding:10;margin-top:30">
+						<h2>Welcome <%= username%></h2>
+					</div>
+					<h5>Profile picture:</h5>
+					<img src="tutorImage.jpg" width="320" height="220">
+					<p>Let other student's know about your knowledge!</p>
+					<h3>Some Links</h3>
+					<p>Lorem ipsum dolor sit ame.</p>
+					<ul class="nav nav-pills nav-stacked">
+						<li class="active"><a href="#">Link 1</a></li>
+						<li><a href="#">Link 2</a></li>
+						<li><a href="#">Link 3</a></li>
+					</ul>
+					<hr class="hidden-sm hidden-md hidden-lg">
+				</div>
+				<div class="col-sm-8">
+					<div style="background-color:rgb(206, 135, 65);height:964;width:140;display:inline-block;color:white;padding:10;margin-top:30">
+						<h2>Sessions Dashboard</h2>
+					</div>
+					<div class="fakeimg">Fake Image</div>
+					<p>Some text..</p>
+					<p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do
+						eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+						exercitation ullamco.</p>
+					<br>
+					<div style="background-color:rgb(206, 135, 65);height:964;width:440;display:inline-block;color:white;padding:10;margin-top:30">
+						<h2>TITLE HEADING</h2>
+					</div>
+					<div class="fakeimg">Fake Image</div>
+					<p>Some text..</p>
+					<p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do
+						eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+						exercitation ullamco.</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+
+</html>
