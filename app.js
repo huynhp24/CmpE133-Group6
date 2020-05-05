@@ -40,7 +40,11 @@ app.get("/helpMe", routes.helpMe);
 app.get("/helpMeData", routes.helpMeData);
 app.get("/chooseTutor/:subject/:questionid", routes.chooseTutor); 
 app.post("/helpMe", routes.helpMePost);
-app.get("/getBackValue", routes.backValue);
+app.get('/testQuery', routes.testQuery);
+app.get('/test', routes.test);
+app.get('/getBackValue', routes.backValue);
+app.get('/viewSchedule', routes.viewSchedule);
+app.get('/viewTutorSchedule', routes.viewTutorSchedule);
 app.get("/createdb", routes.createdb);
 
 // Start Server

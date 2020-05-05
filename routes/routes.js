@@ -33,6 +33,18 @@ exports.helpMeData = function(req, res) {
     db.getQuestions(req, res); 
 };
 
+exports.viewSchedule = function(req, res) {
+    res.render('ViewSchedule.html')
+};
+
+exports.viewTutorSchedule = function(req, res) {
+    res.render('ViewTutorSchedule.html')
+};
+
+exports.test = function(req, res) {
+    res.render('test.html');
+};
+
 exports.createdb = function(req, res) {
     db.createdb(req, res);
 };
