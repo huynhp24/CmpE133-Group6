@@ -47,7 +47,7 @@ app.use(methodOverride('_method')); //for logout(CHRIS)
 
 //Routes
 app.get('/', routes.index);//Introduction page (CHRIS)
-app.get('/home',checkAuthenticated, routes.home);// home page that authenticated user will see right after login(CHRIS)
+app.get('/home',checkAuthenticated, routes.tutorDashboard);// home page that authenticated user will see right after login(CHRIS)
 app.get('/login',checkNotAuthenticated, routes.renderLoginPage); // render login page(CHRIS)
 app.get('/register',checkNotAuthenticated, routes.renderSignupPage); // render register page(CHRIS)
 app.post('/register',checkNotAuthenticated, routes.handleRegisterForm); // handle registration form data(CHRIS)
@@ -56,6 +56,7 @@ app.delete('/logout',routes.logout);// logout(CHRIS)
 //app.get('/testQuery', routes.testQuery);
 //app.get("/", routes.home);
 app.get("/helpMe", routes.helpMe);
+app.get("/helpMeNaked", routes.helpMeNaked)
 app.get("/helpMeData", routes.helpMeData);
 app.get("/chooseTutor/:subject/:questionid", routes.chooseTutor); 
 app.post("/helpMe", routes.helpMePost);
@@ -64,7 +65,7 @@ app.get('/getBackValue', routes.backValue);
 app.get('/viewSchedule', routes.viewSchedule);
 app.get('/viewTutorSchedule', routes.viewTutorSchedule);
 app.get("/createdb", routes.createdb);
-app.get("/tutorDashboard", routes.tutorDashboard);
+app.get("/Dashboard", routes.tutorDashboard);
 
 // Start Server
 http.createServer(app).listen(app.get("port"), "0.0.0.0", function () {

@@ -25,7 +25,6 @@ exports.home = function(req, res) {
 };
 
 
-
 exports.backValue = function(req, res) {
     console.log("wowza");
     let data = {};
@@ -45,6 +44,10 @@ exports.chooseTutor = (req, res) => {
 exports.helpMePost = function(req, res) {
     console.log("There was post of data!"); 
     db.insertQuestion(req, res); 
+};
+
+exports.helpMeNaked = function(req, res) {
+    res.render('helpMe/helpMeNaked');
 };
 
 exports.helpMeData = function(req, res) {
@@ -106,5 +109,5 @@ exports.logout = (req, res) => {
 };
 
 exports.tutorDashboard = (req, res) => {
-    res.render('tutoringDashboard.ejs');
+    res.render('tutoringDashboard.ejs', {username: req.user.username});
 };
