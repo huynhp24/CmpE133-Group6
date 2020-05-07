@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<title>Tutoring Dashboard</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<style>
+		.fakeimg {
+			height: 200px;
+			background: #aaa;
+		}
+	</style>
+</head>
+
+<!--Navigation bar-->
+
+<style>
+	body {
+	  margin: 0;
+	  font-family: Arial, Helvetica, sans-serif;
+	}
+	
+	.topnav {
+	  overflow: hidden;
+	  background-color: #4484CE;
+	}
+	
+	.topnav a {
+	  float: left;
+	  color: #f2f2f2;
+	  text-align: center;
+	  padding: 14px 16px;
+	  text-decoration: none;
+	  font-size: 17px;
+	}
+	
+	.topnav a:hover {
+	  background-color: #ddd;
+	  color: black;
+	}
+	
+	.topnav a.active {
+	  background-color: rgb(40, 77, 119);
+	  color: white;
+	}
+	</style>
+	</head>
+	<body>
+	
+		<div class="topnav">
+			<a class="active" href="/Dashboard">Your Dash</a>
+			<a href="/ViewSchedule">Student Schedule</a>
+			<a href="/ViewTutorSchedule">Tutor Planner</a>
+			<a href="/HelpMe">HelpMe</a>
+			<form style="text-align: right; vertical-align: bottom;" action="/logout?_method=DELETE" method="POST">
+			  <button style="vertical-align:middle;" type="submit">Log out</button>
+		  </form>   
+		  </div>
+
+<!--end of Navigation bar-->
+
+<body>
+	<div style="background-color:#D9D9D9;padding:20;padding-top:20px;height:120%;justify-items: center;padding-top:30"><center>
+		
+		<div style="margin-top:20;margin-bottom:30;width:1290px;height: 115;padding-top: 35;background-color:rgb(86, 207, 102);width:1825;margin-right:10;margin-bottom:50px">
+			<div style="vertical-align:middle;width:69.25%;background-color: rgb(58, 131, 69);">
+			  <heading style="font-family:Fantasy;color:white;vertical-align:middle;font-size:50pt;">Your Dashboard</heading>
+			
+		  </div>
+		
+		  <div id="row1">
+			<a href="/ViewSchedule"><div style="background-color:rgb(58, 131, 69);height:400px;width:400px;display:inline-block;color:white;padding:10px;margin:10px">
+				<h2>Student Schedule</h2>
+			
+				<h5>View your Student Agenda</h5>
+				<img style="background-color: white;" src="views/Google_Calendar.png" width="300" height="300">
+				<hr class="hidden-sm hidden-md hidden-lg">
+			</div></a>
+
+			<a href="/ViewTutorSchedule"><div style="background-color:rgb(58, 131, 69);height:400px;width:400px;display:inline-block;color:white;padding:10px;margin:10px">
+				<h2>Tutoring Planner</h2>
+			
+				<h5>Create and Manage Sessions</h5>
+				<img src="views/planner.png" width="300" height="300">
+				<hr class="hidden-sm hidden-md hidden-lg">
+			</div></a>
+
+			<a href="/HelpMe"><div style="background-color:rgb(58, 131, 69);height:400px;width:400px;display:inline-block;color:white;padding:10px;margin:10px">
+				<h2>HelpMe</h2>
+			
+				<h5>Find the Right Tutor</h5>
+				<img src="views/warning.png" style="background-color: white;" width="300" height="300">
+				<hr class="hidden-sm hidden-md hidden-lg">
+			</div></a>
+</div>
+
+		</div>
+
+	
+		
+			<div id="helpSheet" style="display: inline-block;margin-top:10;height:964px;width:440px;display:inline-block;background-color:#F19F4D;vertical-align: top;padding:30;margin-right:15">
+				<div style="width: 200;backdground-color:rgb(206, 135, 65);font-family:monospace;color:white;padding:10;">
+						
+										<div style="background-color:rgb(206, 135, 65);height:240px;width:400px;display:inline-block;color:white;padding:10px;margin:10px">
+
+						<h5></h5>
+						<img src="views/profile_pic.jpg" width="150" height="150">
+						<h2>Welcome, <%= username%></h2>
+						<hr class="hidden-sm hidden-md hidden-lg">
+					</div></div>
+						<iframe src="https://calendar.google.com/calendar/b/2/embed?height=700&amp;wkst=1&amp;bgcolor=%23ffffff&amp;ctz=America%2FLos_Angeles&amp;src=aGVscG1laGVscG1ldHV0b3JAZ21haWwuY29t&amp;src=YWRkcmVzc2Jvb2sjY29udGFjdHNAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;src=ZW4udXNhI2hvbGlkYXlAZ3JvdXAudi5jYWxlbmRhci5nb29nbGUuY29t&amp;color=%23039BE5&amp;color=%2333B679&amp;color=%230B8043&amp;mode=AGENDA&amp;showPrint=0&amp;showTabs=0&amp;showCalendars=0&amp;showTz=1&amp;showNav=0&amp;showTitle=1&amp;title=Your%20Week%20at%20a%20Glance" style="border:solid 1px #777" width="400" height="700" frameborder="0" scrolling="no"></iframe>
+						
+			</div>
+
+			<div style="display:inline-block;text-align:middle;margin-left:15;background-color:#F19F4D;display:inline-block;height:964px;width:850px;vertical-align: top;padding:10px">
+				 
+				<embed style="vertical-align:middle;display: inline-block;" src=http://localhost:8081/HelpMeNaked width="800" height="950"> </embed>
+				 
+		</div>
+	</center>
+	</div>
+</div>
+</body>
+
+</html>

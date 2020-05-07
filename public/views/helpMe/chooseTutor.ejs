@@ -36,10 +36,13 @@
   </style>
 
 <div class="topnav">
-  <a class="active" href="/home">Home</a>
-  <a href="/ViewSchedule">Schedule</a>
+  <a class="active" href="/Dashboard">Your Dash</a>
+  <a href="/ViewSchedule">Student Schedule</a>
   <a href="/ViewTutorSchedule">Tutor Planner</a>
   <a href="/HelpMe">HelpMe</a>
+  <form style="text-align: right; vertical-align: bottom;" action="/logout?_method=DELETE" method="POST">
+    <button style="vertical-align:middle;" type="submit">Log out</button>
+</form>   
 </div>
 
 <!--end of Navigation bar-->
