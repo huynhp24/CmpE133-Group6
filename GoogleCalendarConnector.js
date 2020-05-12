@@ -1,3 +1,4 @@
+//Google Calendar API Connector by Huynh
 const fs = require('fs');
 const { google } = require('googleapis');
 var output;

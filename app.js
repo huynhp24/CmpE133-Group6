@@ -1,4 +1,7 @@
-
+/**
+ * Node Express skeleton setup by Huynh.
+ * Edited heavily by everyone for their own use.
+ */
 const express =require('express'),
     routes = require('./routes/routes.js'),
     http = require('http'),

@@ -1,4 +1,12 @@
-var db = require('../mySqlConnector.js');
+/**
+ * Node Express skeleton setup by Huynh.
+ * Edited heavily by everyone for their own use.
+ * 
+ * 
+ * 
+ */
+
+ var db = require('../mySqlConnector.js');
 var testBack = require('../testbackEnd.js');
 
 const bcrypt = require('bcrypt');

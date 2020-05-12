@@ -1,3 +1,7 @@
+/**
+ * Simple setup by Huynh
+ * Heavily edited by whole team for their own pages.
+ */
 const bcrypt = require('bcrypt');
 const passport = require('passport')
 

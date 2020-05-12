@@ -1,4 +1,6 @@
 //MySql connector
+
+//Basic initialization by Huynh, Rest by Aldo and Hansol
 var express = require('express');
 var mysql = require('mysql');
 

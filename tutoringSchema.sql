@@ -1,3 +1,7 @@
+/*
+Created by Aldo and edited by Hansol
+Full database management was done by Aldo
+*/
 DROP DATABASE IF EXISTS TUTORING;
 CREATE DATABASE TUTORING;
 USE TUTORING;
